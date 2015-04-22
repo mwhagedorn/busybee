@@ -74,7 +74,7 @@ class AppDelegate
       backing: NSBackingStoreBuffered,
       defer: false)
     @mainWindow.title = NSBundle.mainBundle.infoDictionary['CFBundleName']
-    @skypeController = SkypeController.new @mainWindow
+    @telecomController = TelecomController.new @mainWindow
     @mainWindow.orderFrontRegardless
   end
 

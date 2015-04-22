@@ -17,9 +17,9 @@ module MotionBundler
     "/Users/mhagedorn/develop/busybee/app/models/dream_cheeky_usb_device.rb",
     "/Users/mhagedorn/develop/busybee/app/notification_device_controller.rb",
     "/Users/mhagedorn/develop/busybee/app/openstruct.rb",
-    "/Users/mhagedorn/develop/busybee/app/skype_controller.rb",
     "/Users/mhagedorn/develop/busybee/app/skype_fsm.rb",
     "/Users/mhagedorn/develop/busybee/app/skype_parser.rb",
+    "/Users/mhagedorn/develop/busybee/app/telecom_controller.rb",
     "/Users/mhagedorn/develop/busybee/app/usb_devices_manager.rb",
     "/Users/mhagedorn/develop/busybee/app/usb_lamp.rb"
   ]

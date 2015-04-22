@@ -8,9 +8,14 @@ Should be pluggable
   Skype
   Lync
   G+ hangouts
-  
-  
+
+
 Light Blue Bean is the current target, its got a LED that can be red, green, etc.  It connects via BlueTooth LE.
 https://punchthrough.com/bean/
+
+#TODO   FSM for skype not firing
+#TODO   Move FSM code to external class (started)
+#TODO   implement handle_on_the_phone/handle_not_on_the_phone. Now its a noop
+
 
 

@@ -1,0 +1,778 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<struct name='PTDAcceleration' type='{_PTDAcceleration=&quot;x&quot;d&quot;y&quot;d&quot;z&quot;d}'>
+<field declared_type='double' name='x' type='d'/>
+<field declared_type='double' name='y' type='d'/>
+<field declared_type='double' name='z' type='d'/>
+</struct>
+<constant const='true' declared_type='NSString*' name='ASDBeanFoundNotification' type='@'/>
+<constant const='true' declared_type='NSString*' name='LTIOUSBDeviceConnectedNotification' type='@'/>
+<constant const='true' declared_type='NSString*' name='LTIOUSBDeviceDisconnectedNotification' type='@'/>
+<constant const='true' declared_type='NSString*' name='LTIOUSBManagerObjectBaseClassKey' type='@'/>
+<string_constant name='TPDBeanErrorDomain' nsstring='true' value='TPDBeanErrorDomain'/>
+<enum name='ARDUINO_OAD_GENERIC_TIMEOUT_SEC' value='3'/>
+<enum name='ArduinoPowerState_Off' value='1'/>
+<enum name='ArduinoPowerState_On' value='2'/>
+<enum name='ArduinoPowerState_Unknown' value='0'/>
+<enum name='BeanErrors_AlreadyConnected' value='4'/>
+<enum name='BeanErrors_AlreadyConnecting' value='5'/>
+<enum name='BeanErrors_BluetoothNotOn' value='1'/>
+<enum name='BeanErrors_DeviceNotEligible' value='6'/>
+<enum name='BeanErrors_FailedDisconnect' value='7'/>
+<enum name='BeanErrors_InvalidArgument' value='0'/>
+<enum name='BeanErrors_NoPeriphealDiscovered' value='3'/>
+<enum name='BeanErrors_NotConnected' value='2'/>
+<enum name='BeanManagerState_PoweredOff' value='4'/>
+<enum name='BeanManagerState_PoweredOn' value='5'/>
+<enum name='BeanManagerState_Resetting' value='1'/>
+<enum name='BeanManagerState_Unauthorized' value='3'/>
+<enum name='BeanManagerState_Unknown' value='0'/>
+<enum name='BeanManagerState_Unsupported' value='2'/>
+<enum name='BeanState_AttemptingConnection' value='2'/>
+<enum name='BeanState_AttemptingDisconnection' value='5'/>
+<enum name='BeanState_AttemptingValidation' value='3'/>
+<enum name='BeanState_ConnectedAndValidated' value='4'/>
+<enum name='BeanState_Discovered' value='1'/>
+<enum name='BeanState_Unknown' value='0'/>
+<enum name='COCOAPODS_VERSION_MAJOR_ASDBeanProxy' value='0'/>
+<enum name='COCOAPODS_VERSION_MAJOR_Bean_iOS_OSX_SDK' value='0'/>
+<enum name='COCOAPODS_VERSION_MAJOR_LTIOUSB' value='0'/>
+<enum name='COCOAPODS_VERSION_MINOR_ASDBeanProxy' value='0'/>
+<enum name='COCOAPODS_VERSION_MINOR_Bean_iOS_OSX_SDK' value='5'/>
+<enum name='COCOAPODS_VERSION_MINOR_LTIOUSB' value='0'/>
+<enum name='COCOAPODS_VERSION_PATCH_ASDBeanProxy' value='5'/>
+<enum name='COCOAPODS_VERSION_PATCH_Bean_iOS_OSX_SDK' value='3'/>
+<enum name='COCOAPODS_VERSION_PATCH_LTIOUSB' value='1'/>
+<enum name='PTDAdvertisingMode_IBeacon' value='1'/>
+<enum name='PTDAdvertisingMode_Standard' value='0'/>
+<enum name='PTDTxPower_0dB' value='1'/>
+<enum name='PTDTxPower_4dB' value='0'/>
+<enum name='PTDTxPower_neg23dB' value='3'/>
+<enum name='PTDTxPower_neg6dB' value='2'/>
+<class name='ASDBeanProxy'>
+<method selector='connectToBean:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='connectToBeanWithIdentifier:'>
+<arg declared_type='NSUUID*' index='0' name='identifier' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='connectedBeans'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='disconnectFromBean:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='discoveredBeans'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='isConnectedToBean:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isConnectedToBeanWithIdentifier:'>
+<arg declared_type='NSUUID*' index='0' name='identifier' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='sharedASDBeanProxy'>
+<retval declared_type='ASDBeanProxy*' type='@'/>
+</method>
+<method selector='startScanningForBeans'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='stopScanningForBeans'>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='LTIOUSBDevice'>
+<method selector='addAsyncRunloopSourceToRunloop:'>
+<arg declared_type='CFRunLoopRef' index='0' name='toRunloop' type='^{__CFRunLoop=}'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='clearPipeStall:'>
+<arg declared_type='UInt8' index='0' name='pipe' type='C'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='closeDevice'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='closeInterface'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='createDeviceInterface'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='createPluginInterface'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='destroyDeviceInterface'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='destroyInterfaceInterface'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='destroyPluginInterface'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='device'>
+<retval declared_type='io_service_t' type='I'/>
+</method>
+<method selector='deviceConnected'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='deviceDisconnected'>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='deviceIdentifier:'>
+<arg declared_type='io_service_t' index='0' name='device' type='I'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='deviceInfo'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='deviceInterface'>
+<retval declared_type='IOUSBDeviceInterface320**' type='^^{IOUSBDeviceStruct320}'/>
+</method>
+<method selector='findFirstInterfaceInterface'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='identifier'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='initWithIdentifier:'>
+<arg declared_type='NSString*' index='0' name='identifier' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='interfaceInterface'>
+<retval declared_type='IOUSBInterfaceInterface300**' type='^^{IOUSBInterfaceStruct300}'/>
+</method>
+<method selector='isConnected'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='openDevice'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='openInterface'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='pluginInterface'>
+<retval declared_type='IOCFPlugInInterface**' type='^^{IOCFPlugInInterfaceStruct}'/>
+</method>
+<method selector='readFromPipe:data:noDataTimeout:completionTimeout:'>
+<arg declared_type='UInt8' index='0' name='pipe' type='C'/>
+<arg declared_type='NSData**' index='1' name='readData' type='^@'/>
+<arg declared_type='UInt32' index='2' name='dto' type='L' type64='I'/>
+<arg declared_type='UInt32' index='3' name='cto' type='L' type64='I'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='readFromPipeAsync:callback:maxPacketSize:noDataTimeout:completionTimeout:'>
+<arg declared_type='UInt8' index='0' name='pipe' type='C'/>
+<arg declared_type='LTIOUSBDeviceReadCallback' function_pointer='true' index='1' name='callback' type='@?'>
+<arg declared_type='NSData*' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<arg declared_type='UInt32' index='2' name='maxSize' type='L' type64='I'/>
+<arg declared_type='UInt32' index='3' name='dto' type='L' type64='I'/>
+<arg declared_type='UInt32' index='4' name='cto' type='L' type64='I'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='removeFromDeviceListOnDisconnect'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='resetDevice'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='sendControlRequestToPipe:request:'>
+<arg declared_type='UInt8' index='0' name='pipe' type='C'/>
+<arg declared_type='IOUSBDevRequestTO' index='1' name='request' type='{_IOUSBDevRequestTO=CCSSS^vIII}'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setDeviceConnectedWithDevice:'>
+<arg declared_type='io_service_t' index='0' name='device' type='I'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDeviceDisconnected'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDeviceInfo:'>
+<arg declared_type='NSDictionary*' index='0' name='deviceInfo' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='writeToPipe:data:noDataTimeout:completionTimeout:'>
+<arg declared_type='UInt8' index='0' name='pipe' type='C'/>
+<arg declared_type='NSData*' index='1' name='data' type='@'/>
+<arg declared_type='UInt32' index='2' name='dto' type='L' type64='I'/>
+<arg declared_type='UInt32' index='3' name='cto' type='L' type64='I'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='writeToPipeAsync:data:callback:noDataTimeout:completionTimeout:'>
+<arg declared_type='UInt8' index='0' name='pipe' type='C'/>
+<arg declared_type='NSData*' index='1' name='data' type='@'/>
+<arg declared_type='LTIOUSBDeviceWriteCallback' function_pointer='true' index='2' name='callback' type='@?'>
+<arg declared_type='BOOL' type='B'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<arg declared_type='UInt32' index='3' name='dto' type='L' type64='I'/>
+<arg declared_type='UInt32' index='4' name='cto' type='L' type64='I'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='LTIOUSBManager'>
+<method selector='addDevice:'>
+<arg declared_type='LTIOUSBDevice*' index='0' name='device' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='deviceWithIdentifier:'>
+<arg declared_type='NSString*' index='0' name='identifier' type='@'/>
+<retval declared_type='LTIOUSBDevice*' type='@'/>
+</method>
+<method selector='devices'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method class_method='true' selector='matchingDictionaryForAllUSBDevicesWithObjectBaseClass:'>
+<arg declared_type='Class' index='0' name='cls' type='#'/>
+<retval declared_type='NSMutableDictionary*' type='@'/>
+</method>
+<method class_method='true' selector='matchingDictionaryForProductID:vendorID:objectBaseClass:'>
+<arg declared_type='uint16_t' index='0' name='deviceID' type='S'/>
+<arg declared_type='uint16_t' index='1' name='vendorID' type='S'/>
+<arg declared_type='Class' index='2' name='cls' type='#'/>
+<retval declared_type='NSMutableDictionary*' type='@'/>
+</method>
+<method selector='removeDevice:'>
+<arg declared_type='LTIOUSBDevice*' index='0' name='device' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDevices:'>
+<arg declared_type='NSArray*' index='0' name='devices' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='sharedInstance'>
+<retval declared_type='LTIOUSBManager*' type='@'/>
+</method>
+<method selector='startWithMatchingDictionaries:'>
+<arg declared_type='NSArray*' index='0' name='array' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='startWithMatchingDictionary:'>
+<arg declared_type='NSDictionary*' index='0' name='dict' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='BeanManager:didConnectToBean:error:'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='BeanManager:didDisconnectBean:error:'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='BeanManager:didDiscoverBean:error:'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:ArduinoProgrammingTimeLeft:withPercentage:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSNumber*' index='1' name='seconds' type='@'/>
+<arg declared_type='NSNumber*' index='2' name='percentageComplete' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didProgramArduinoWithError:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateAccelerationAxes:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='PTDAcceleration' index='1' name='acceleration' type='{_PTDAcceleration=ddd}'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateLedColor:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSColor*' index='1' name='color' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateRadioConfig:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='PTDBeanRadioConfig*' index='1' name='config' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateScratchBank:data:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSInteger' index='1' name='bank' type='i' type64='q'/>
+<arg declared_type='NSData*' index='2' name='data' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateScratchNumber:withValue:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSNumber*' index='1' name='number' type='@'/>
+<arg declared_type='NSData*' index='2' name='data' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateSketchName:dateProgrammed:crc32:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSString*' index='1' name='name' type='@'/>
+<arg declared_type='NSDate*' index='2' name='date' type='@'/>
+<arg declared_type='UInt32' index='3' name='crc' type='L' type64='I'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateTemperature:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSNumber*' index='1' name='degrees_celsius' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:error:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:serialDataReceived:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSData*' index='1' name='data' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanDidUpdateArduinoPowerState:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanDidUpdateBatteryVoltage:error:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanDidUpdateRSSI:error:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanManager:didConnectBean:error:'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanManager:didDisconnectBean:error:'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanManager:didDiscoverBean:error:'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanManagerDidUpdateState:'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didConnectToBean:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didDisconnectFromBean:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didUpdateDiscoveredBeans:withBean:'>
+<arg declared_type='NSArray*' index='0' name='discoveredBeans' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='newBean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='PTDBean'>
+<method selector='RSSI'>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method selector='advertisementData'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='arduinoPowerState'>
+<retval declared_type='ArduinoPowerState' type='i' type64='q'/>
+</method>
+<method selector='batteryVoltage'>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method selector='beanManager'>
+<retval declared_type='PTDBeanManager*' type='@'/>
+</method>
+<method selector='dateProgrammed'>
+<retval declared_type='NSDate*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='firmwareVersion'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='identifier'>
+<retval declared_type='NSUUID*' type='@'/>
+</method>
+<method selector='isEqualToBean:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='lastDiscovered'>
+<retval declared_type='NSDate*' type='@'/>
+</method>
+<method selector='name'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='programArduinoWithRawHexImage:andImageName:'>
+<arg declared_type='NSData*' index='0' name='image' type='@'/>
+<arg declared_type='NSString*' index='1' name='name' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='radioConfig'>
+<retval declared_type='PTDBeanRadioConfig*' type='@'/>
+</method>
+<method selector='readAccelerationAxes'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readAccelerationAxis'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readArduinoPowerState'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readArduinoSketchInfo'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readBatteryVoltage'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readLedColor'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readRSSI'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readRadioConfig'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readScratchBank:'>
+<arg declared_type='NSInteger' index='0' name='bank' type='i' type64='q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='readTemperature'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='sendSerialData:'>
+<arg declared_type='NSData*' index='0' name='data' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='sendSerialString:'>
+<arg declared_type='NSString*' index='0' name='string' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setArduinoPowerState:'>
+<arg declared_type='ArduinoPowerState' index='0' name='state' type='i' type64='q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDateProgrammed:'>
+<arg declared_type='NSDate*' index='0' name='dateProgrammed' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setLedColor:'>
+<arg declared_type='NSColor*' index='0' name='color' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPairingPin:'>
+<arg declared_type='NSUInteger*' index='0' name='pinCode' type='^I' type64='^Q'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setRadioConfig:'>
+<arg declared_type='PTDBeanRadioConfig*' index='0' name='config' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setScratchBank:data:'>
+<arg declared_type='NSInteger' index='0' name='bank' type='i' type64='q'/>
+<arg declared_type='NSData*' index='1' name='data' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setScratchNumber:withValue:'>
+<arg declared_type='NSInteger' index='0' name='scratchNumber' type='i' type64='q'/>
+<arg declared_type='NSData*' index='1' name='value' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setSketchName:'>
+<arg declared_type='NSString*' index='0' name='sketchName' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='sketchName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='state'>
+<retval declared_type='BeanState' type='i' type64='q'/>
+</method>
+</class>
+<class name='PTDBeanManager'>
+<method selector='connectToBean:error:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError**' index='1' name='error' type='^@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='disconnectBean:error:'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError**' index='1' name='error' type='^@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='initWithDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='startScanningForBeans_error:'>
+<arg declared_type='NSError**' index='0' name='error' type='^@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='state'>
+<retval declared_type='BeanManagerState' type='I' type64='Q'/>
+</method>
+<method selector='stopScanningForBeans_error:'>
+<arg declared_type='NSError**' index='0' name='error' type='^@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='PTDBeanRadioConfig'>
+<method selector='advertisingInterval'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='advertisingMode'>
+<retval declared_type='PTDAdvertisingMode' type='I' type64='Q'/>
+</method>
+<method selector='connectionInterval'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='iBeacon_UUID'>
+<retval declared_type='UInt16' type='S'/>
+</method>
+<method selector='iBeacon_majorID'>
+<retval declared_type='UInt16' type='S'/>
+</method>
+<method selector='iBeacon_minorID'>
+<retval declared_type='UInt16' type='S'/>
+</method>
+<method selector='name'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='pairingPinEnabled'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='power'>
+<retval declared_type='PTDTxPower_dB' type='I' type64='Q'/>
+</method>
+<method selector='setAdvertisingInterval:'>
+<arg declared_type='CGFloat' index='0' name='advertisingInterval' type='f' type64='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAdvertisingMode:'>
+<arg declared_type='PTDAdvertisingMode' index='0' name='advertisingMode' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setConnectionInterval:'>
+<arg declared_type='CGFloat' index='0' name='connectionInterval' type='f' type64='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setIBeacon_UUID:'>
+<arg declared_type='UInt16' index='0' name='iBeacon_UUID' type='S'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setIBeacon_majorID:'>
+<arg declared_type='UInt16' index='0' name='iBeacon_majorID' type='S'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setIBeacon_minorID:'>
+<arg declared_type='UInt16' index='0' name='iBeacon_minorID' type='S'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setName:'>
+<arg declared_type='NSString*' index='0' name='name' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPairingPinEnabled:'>
+<arg declared_type='BOOL' index='0' name='pairingPinEnabled' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPower:'>
+<arg declared_type='PTDTxPower_dB' index='0' name='power' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='validate:'>
+<arg declared_type='NSError**' index='0' name='error' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='PTDBleDevice'>
+<method selector='initWithPeripheral:'>
+<arg declared_type='CBPeripheral*' index='0' name='peripheral' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='interrogateAndValidate'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='requiredProfilesAreValid'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<informal_protocol name='ASDBeanProxyDelegate'>
+<method selector='didConnectToBean:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didDisconnectFromBean:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didUpdateDiscoveredBeans:withBean:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='NSArray*' index='0' name='discoveredBeans' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='newBean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='PTDBeanDelegate'>
+<method selector='bean:ArduinoProgrammingTimeLeft:withPercentage:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSNumber*' index='1' name='seconds' type='@'/>
+<arg declared_type='NSNumber*' index='2' name='percentageComplete' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didProgramArduinoWithError:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateAccelerationAxes:' type='v36@0:4@8{?=ddd}12' type64='v48@0:8@16{?=ddd}24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='PTDAcceleration' index='1' name='acceleration' type='{_PTDAcceleration=ddd}'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateLedColor:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSColor*' index='1' name='color' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateRadioConfig:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='PTDBeanRadioConfig*' index='1' name='config' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateScratchBank:data:' type='v20@0:4@8i12@16' type64='v40@0:8@16q24@32'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSInteger' index='1' name='bank' type='i' type64='q'/>
+<arg declared_type='NSData*' index='2' name='data' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateScratchNumber:withValue:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSNumber*' index='1' name='number' type='@'/>
+<arg declared_type='NSData*' index='2' name='data' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateSketchName:dateProgrammed:crc32:' type='v24@0:4@8@12@16L20' type64='v44@0:8@16@24@32I40'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSString*' index='1' name='name' type='@'/>
+<arg declared_type='NSDate*' index='2' name='date' type='@'/>
+<arg declared_type='UInt32' index='3' name='crc' type='L' type64='I'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:didUpdateTemperature:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSNumber*' index='1' name='degrees_celsius' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:error:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='bean:serialDataReceived:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSData*' index='1' name='data' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanDidUpdateArduinoPowerState:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanDidUpdateBatteryVoltage:error:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanDidUpdateRSSI:error:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PTDBean*' index='0' name='bean' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='PTDBeanManagerDelegate'>
+<method selector='BeanManager:didConnectToBean:error:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='BeanManager:didDisconnectBean:error:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='BeanManager:didDiscoverBean:error:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanManager:didConnectBean:error:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanManager:didDisconnectBean:error:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanManager:didDiscoverBean:error:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<arg declared_type='PTDBean*' index='1' name='bean' type='@'/>
+<arg declared_type='NSError*' index='2' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='beanManagerDidUpdateState:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='PTDBeanManager*' index='0' name='beanManager' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+</signatures>

@@ -1,0 +1,24 @@
+PODS:
+  - ASDBeanProxy (0.0.5):
+    - Bean-iOS-OSX-SDK
+  - Bean-iOS-OSX-SDK (0.5.3)
+  - LTIOUSB (0.0.1)
+
+DEPENDENCIES:
+  - ASDBeanProxy (from `https://github.com/mwhagedorn/ASDBeanProxy.git`, tag `0.0.5`)
+  - LTIOUSB (from `https://github.com/mwhagedorn/LTIOUSB.git`, tag `0.0.2`)
+
+EXTERNAL SOURCES:
+  ASDBeanProxy:
+    :git: https://github.com/mwhagedorn/ASDBeanProxy.git
+    :tag: 0.0.5
+  LTIOUSB:
+    :git: https://github.com/mwhagedorn/LTIOUSB.git
+    :tag: 0.0.2
+
+SPEC CHECKSUMS:
+  ASDBeanProxy: a367115569557bec92ad4872ce3ab84306b5dd37
+  Bean-iOS-OSX-SDK: 5a505d1e080a3d20c93d3473dc5e50a6049c9e7f
+  LTIOUSB: 144d6bfcde9a1bfeeb72a9216562bb89826e4a47
+
+COCOAPODS: 0.33.1

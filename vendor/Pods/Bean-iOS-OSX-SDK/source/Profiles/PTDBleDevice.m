@@ -8,6 +8,7 @@
 
 #import "PTDBleDevice.h"
 #import "Profile_Protocol.h"
+#import "CBPeripheral+RSSI_Universal.h"
 
 @implementation PTDBleDevice
 
@@ -54,6 +55,25 @@
  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWriteValueForCharacteristic:) name:@"didWriteValueForCharacteristic" object:peripheralNotifier];
  }
  */
+#if TARGET_OS_IPHONE // This is used in iOS 8
+- (void)peripheral:(CBPeripheral *)peripheral didReadRSSI:(NSNumber *)RSSI error:(NSError *)error{
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                            peripheral ?: [NSNull null], @"peripheral",
+                            RSSI ?: [NSNull null], @"rssi",
+                            error ?: [NSNull null], @"error",
+                            nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"peripheral:didReadRSSI:error:" object:params];
+    for (id<Profile_Protocol> profile in _profiles) {
+        if(profile){
+            if([profile respondsToSelector:@selector(peripheral:didReadRSSI:error:)]){
+                [profile peripheral:peripheral didReadRSSI:RSSI error:error];
+            }
+        }
+    }
+    _RSSI = RSSI;
+    [self rssiDidUpdateWithError:error];
+}
+#endif
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error{
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
                             peripheral ?: [NSNull null], @"peripheral",
@@ -67,6 +87,8 @@
             }
         }
     }
+    // This callback is deprecated for iOS8. The logic below prevents a nil RSSI from potentially overwriting the actual RSSI in iOS8 in the event that both callbacks are invoked.
+    _RSSI = [_peripheral RSSI_Universal]?[_peripheral RSSI_Universal]:_RSSI;
     [self rssiDidUpdateWithError:error];
 }
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{

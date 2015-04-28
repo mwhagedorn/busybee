@@ -15,6 +15,7 @@
 #import "AppMessagingLayer.h"
 #import "NSData+CRC.h"
 #import "PTDBeanRadioConfig.h"
+#import "CBPeripheral+RSSI_Universal.h"
 
 #define DELAY_BEFORE_PROFILE_VALIDATION  0.5f
 #define PROFILE_VALIDATION_RETRY_TIMEOUT  10.0f
@@ -85,11 +86,15 @@ typedef enum { //These occur in sequence
     return [_advertisementData objectForKey:CBAdvertisementDataLocalNameKey]?[_advertisementData objectForKey:CBAdvertisementDataLocalNameKey]:@"Unknown";//Local Name
 }
 -(NSNumber*)RSSI{
+    NSNumber* returnedRSSI;
     if(_peripheral.state == CBPeripheralStateConnected
-    && [_peripheral RSSI]){
-        return [_peripheral RSSI];
+    && [_peripheral RSSI_Universal]){
+        returnedRSSI = [_peripheral RSSI_Universal];
+    }else{
+        returnedRSSI = _RSSI;
     }
-    return _RSSI;
+    // If RSSI == 127, that means it's unavailable. Return nil in this case
+    return (returnedRSSI.integerValue!=127)?returnedRSSI:nil;
 }
 -(NSNumber*)batteryVoltage{
     if(_peripheral.state == CBPeripheralStateConnected
@@ -124,6 +129,10 @@ typedef enum { //These occur in sequence
 }
 
 #pragma mark SDK
+- (void)releaseSerialGate {
+  [appMessageLayer sendMessageWithID:MSG_ID_BT_END_GATE andPayload:nil];
+}
+
 - (BOOL)setPairingPin:(NSUInteger*)pinCode{
     if(![self connected]) {
         return FALSE;

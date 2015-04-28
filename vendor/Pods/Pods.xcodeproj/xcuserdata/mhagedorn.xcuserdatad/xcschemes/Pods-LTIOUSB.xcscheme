@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECDAB7F0FC664688913D421D"
+               BlueprintIdentifier = "5AF9F401B7B64C0BBDA44244"
                BuildableName = "libPods-LTIOUSB.a"
                BlueprintName = "Pods-LTIOUSB"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -5,7 +5,6 @@ class AppDelegate
   def applicationDidFinishLaunching(notification)
     @beans = []
     @beanm = BeanDevicesManager.new
-    @usbm = USBDevicesManager.new
 
     buildMenu
     buildWindow
@@ -38,15 +37,6 @@ class AppDelegate
     ASDBeanProxy.sharedASDBeanProxy.stopScanningForBeans
   end
 
-  def didFindUSBDevice(notification)
-    @device = notification.object.first
-    NSLog("AppDelegate::found device")
-  end
-
-  def didLoseUSBDevice(notification)
-    @device = nil
-    NSLog("AppDelegate::device disconnected")
-  end
 
   def didChangeDiscoveredBeans(notification)
     self.beans = @beanm.beans

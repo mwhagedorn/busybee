@@ -24,7 +24,6 @@ NSString * const ASDBeanFoundNotification = @"ASDBeanFound";
 
 
 - (void)connectToBean:(PTDBean *)bean {
-NSLog(@"asd:Connect To Bean");
   if (![self isConnectedToBean:bean]) {
     [self.beanManager connectToBean:bean error:nil];
   }
@@ -109,10 +108,7 @@ NSLog(@"asd:Connect To Bean");
     NSLog(@"Discovered Bean %@ (%@)",bean.name,bean.identifier);
     self.discoveredBeansDict[bean.identifier] = bean;
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didUpdateDiscoveredBeans:withBean:)]) {
-      NSLog(@"%@",[self.delegate class]);
-      NSLog(@"asd:didupdate");
       [self.delegate didUpdateDiscoveredBeans:[self discoveredBeans] withBean:bean];
-
     }
     [self connectToBean:bean];
     [[NSNotificationCenter defaultCenter] postNotificationName:ASDBeanFoundNotification object:bean];

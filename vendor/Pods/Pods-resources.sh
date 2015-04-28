@@ -41,8 +41,8 @@ install_resource()
       ;;
   esac
 }
-install_resource "Bean-iOS-OSX-SDK/firmware/201409080001_BEAN_imgA.bin"
-install_resource "Bean-iOS-OSX-SDK/firmware/201409080001_BEAN_imgB.bin"
+install_resource "Bean-iOS-OSX-SDK/firmware/201411040000_BEAN_imgA.bin"
+install_resource "Bean-iOS-OSX-SDK/firmware/201411040000_BEAN_imgB.bin"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

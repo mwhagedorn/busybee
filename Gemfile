@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'motion-state-machine'
+
 gem 'motion-cocoapods'
 
 
 gem "motion-bundler"
+
+gem 'motion-state-machine'
 
 # RubyMotion unaware gems
 group :motion do

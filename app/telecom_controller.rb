@@ -28,7 +28,7 @@ class TelecomController
 
 
     @fsm.when :available do |state|
-      state.on_entry { puts "I'm available, started and alive!" }
+      state.on_entry { NSLog "I'm available, started and alive!" }
       state.transition_to(:busy, on: :unplaced, action: proc { NSLog("ANC");handle_on_the_phone })
       state.transition_to(:busy, on: :routing, action: proc { handle_on_the_phone })
       state.transition_to(:busy, on: :earlymedia, action: proc { handle_on_the_phone })
@@ -38,7 +38,7 @@ class TelecomController
      end
 
      @fsm.when :busy do |state|
-       state.on_entry { puts "I'm busy, started and alive!" }
+       state.on_entry { NSLog "I'm busy, started and alive!" }
        state.transition_to(:available, on: :finished)
        state.transition_to(:available, on: :refused)
        state.transition_to(:available, on: :missed)
@@ -47,6 +47,8 @@ class TelecomController
          handle_not_on_the_phone
        end
      end
+
+     @fsm.start!
 
 
   end
@@ -134,7 +136,7 @@ def recieved_skype_status(notification)
   userinfo = notification.userInfo
   responseMessage = userinfo.valueForKey("status")
   NSLog("Skype Status Message "+ responseMessage)
-  @fsm.event(responseMessage)
+  @fsm.event(responseMessage.to_sym)
 end
 
 def recieved_lync_response(notification)
@@ -168,6 +170,13 @@ def handle_not_on_the_phone
  notify_off
 end
 
+def notify_on
+  NSLog("***Turn LED on***")
+end
+
+def notify_off
+  NSLog("***Turn LED off***")
+end
 
 
   ## Data Loading

@@ -19,9 +19,7 @@ module MotionBundler
     "/Users/mhagedorn/develop/busybee/app/openstruct.rb",
     "/Users/mhagedorn/develop/busybee/app/skype_fsm.rb",
     "/Users/mhagedorn/develop/busybee/app/skype_parser.rb",
-    "/Users/mhagedorn/develop/busybee/app/telecom_controller.rb",
-    "/Users/mhagedorn/develop/busybee/app/usb_devices_manager.rb",
-    "/Users/mhagedorn/develop/busybee/app/usb_lamp.rb"
+    "/Users/mhagedorn/develop/busybee/app/telecom_controller.rb"
   ]
   FILES_DEPENDENCIES = {
     "/Users/mhagedorn/.rvm/gems/ruby-2.1.0/gems/motion-bundler-0.2.1/lib/motion-bundler/simulator/boot.rb" => [

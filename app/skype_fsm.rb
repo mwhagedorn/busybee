@@ -32,5 +32,15 @@ class SkypeFSM
     @fsm.start!
   end
 
+  def handle_on_the_phone
+    NSLog("***Send LED on***")
+    NSNotificationCenter.defaultCenter.postNotificationName("ASDBeanLightRed", object: self)
+  end
+
+  def handle_not_on_the_phone
+    NSLog("***Send LED off***")
+    NSNotificationCenter.defaultCenter.postNotificationName("ASDBeanLightClear", object: self)
+  end
+
 
 end

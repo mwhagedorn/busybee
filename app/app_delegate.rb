@@ -68,15 +68,15 @@ class AppDelegate
 
 
   def led_red(sender)
-    @beanm.bean_red if @beanm
+    @beanm.bean_red
   end
 
   def led_clear(sender)
-    @beanm.bean_clear if @beanm
+    @beanm.bean_clear
   end
 
   def led_green(sender)
-    @beanm.bean_green if @beanm
+    @beanm.bean_green
   end
 
 
@@ -149,25 +149,6 @@ class AppDelegate
   def numberOfRowsInTableView(tableView)
     self.beans.count
   end
-
-
-  #def toggle_led(sender)
-  #  if @LEDstate
-  #    @LEDstate = false
-  #    if bean.state == BeanState_ConnectedAndValidated
-  #      bean.setLedColor = nil
-  #    end
-  #  else
-  #    self.change_led_color(self)
-  #  end
-  #end
-  #
-  #def change_led_color(sender)
-  #  if bean.state == BeanState_ConnectedAndValidated
-  #    bean.setLedColor(LEDColorWell.color)
-  #  end
-  #  @LEDstate = true
-  #end
 
  def validateUserInterfaceItem(anItem)
   NSLog("validateUserInterfaceItem")

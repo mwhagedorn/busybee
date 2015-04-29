@@ -10,50 +10,19 @@ class TelecomController
 
 
   def initialize(window)
-    @imPersonStatus = []
-    @abPeople = []
 
-
-
-
-		notifications = NSDistributedNotificationCenter.defaultCenter
+		notifications = NSNotificationCenter.defaultCenter
 
 		notifications.addObserver(self,selector:'recieved_skype_response:', name:SKYPE_EVENT, object:nil)
     NSNotificationCenter.defaultCenter.addObserver(self,selector:'recieved_lync_response:',name:'BBLyncStatusNotification', object:nil )
     NSNotificationCenter.defaultCenter.addObserver(self,selector:'recieved_skype_status:',name:'BBSkypeStatusNotification', object:nil )
     @log_watcher = LogWatcher.new
     @skype_parser = SkypeParser.new
-
-    @fsm = StateMachine::Base.new start_state: :available, verbose: true
-
-
-    @fsm.when :available do |state|
-      state.on_entry { NSLog "I'm available, started and alive!" }
-      state.transition_to(:busy, on: :unplaced, action: proc { NSLog("ANC");handle_on_the_phone })
-      state.transition_to(:busy, on: :routing, action: proc { handle_on_the_phone })
-      state.transition_to(:busy, on: :earlymedia, action: proc { handle_on_the_phone })
-      state.transition_to(:busy, on: :ringing, action: proc { handle_on_the_phone })
-      state.transition_to(:busy, on: :inprogress, action: proc { handle_on_the_phone })
-      state.transition_to(:busy, on: :duration, action: proc { handle_on_the_phone })
-     end
-
-     @fsm.when :busy do |state|
-       state.on_entry { NSLog "I'm busy, started and alive!" }
-       state.transition_to(:available, on: :finished)
-       state.transition_to(:available, on: :refused)
-       state.transition_to(:available, on: :missed)
-       state.transition_to(:available, on: :cancelled)
-       state.on_exit do
-         handle_not_on_the_phone
-       end
-     end
-
-     @fsm.start!
-
+    @fsm = SkypeFSM.new
 
   end
 
-  def setupSkypeListeners
+
 
 # 2014-08-12 17:33:21.466 busybee[11940:303] CALL 1283565 STATUS ROUTING
 # 2014-08-12 17:33:21.469 busybee[11940:303] CALL 1283565 STATUS ROUTING
@@ -117,13 +86,6 @@ class TelecomController
 # Aug 13 04:16:03 Faramir.local Microsoft Lync[5004]: Status changed to: eOnlinePresent. Voicemail playing is allowed: YES
 
 
-    # if(!@isConnected)
-    #   NSDistributedNotificationCenter.defaultCenter.postNotificationName("SKSkypeAPIAvailabilityRequest" object:nil,userInfo:nil deliverImmediately:true)
-    #   NSDistributedNotificationCenter.defaultCenter.postNotificationName("SKSkypeAPIAttachRequest" object:"skypeListener",userInfo:nil deliverImmediately:true)
-    # end
-
-  end
-
 
 def recieved_skype_response(notification)
 	userinfo = notification.userInfo
@@ -145,7 +107,6 @@ def recieved_lync_response(notification)
   NSLog("Lync Message")
   NSLog(responseMessage)
   handle_lync_status(responseMessage)
-
 end
 
 def handle_lync_status(state)
@@ -181,65 +142,6 @@ def notify_off
 end
 
 
-  ## Data Loading
-  #def bestStatusForPerson(person)
-  #  bestStatus = IMPersonStatusOffline # Let's assume they're offline to start
-  #  IMService.allServices.each do |service|
-  #    snames = service.screenNamesForPerson(person)
-  #    if snames
-  #      snames.each do |screenName|
-  #        dict = service.infoForScreenName(screenName)
-  #        next if dict.nil?
-  #        status = dict[IMPersonStatusKey]
-  #        next if status.nil?
-  #        thisStatus = status.intValue
-  #        if thisStatus > bestStatus
-  #          bestStatus = thisStatus
-  #        end
-  #      end
-  #    end
-  #  end
-  #  bestStatus
-  #end
-  #
-  ## This dumps all the status information and rebuilds the array against the current @abPeople
-  ## Fairly expensive, so this is only done when necessary
-  #def rebuildStatusInformation
-  #  @imPersonStatus = @abPeople.map { |person| bestStatusForPerson(person) }
-  #  @table.reloadData
-  #end
-  #
-  ## Rebuild status information for a given person, much faster than a full rebuild
-  #def rebuildStatusInformationForPerson(forPerson)
-  #  @abPeople.each_with_index do |person, i|
-  #    next unless person == forPerson
-  #    @imPersonStatus[i] = bestStatusForPerson(person)
-  #  end
-  #  @table.reloadData
-  #end
-  #
-  ## This will do a full flush of people in our AB Cache, along with rebuilding their status
-  #def reloadABPeople
-  #  @abPeople = ABAddressBook.sharedAddressBook.people.sort do |x, y|
-  #    x.displayName <=> y.displayName
-  #  end
-  #  rebuildStatusInformation
-  #end
-  #
-  ## NSTableViewDataSource protocol.
-  #
-  #def numberOfRowsInTableView(tableView)
-  #  @abPeople ? @abPeople.size : 0
-  #end
-  #
-  #def tableView(tableView, objectValueForTableColumn:tableColumn, row:row)
-  #  case tableColumn.identifier
-  #    when 'status'
-  #      status = @imPersonStatus[row]
-  #      NSImage.imageNamed IMService.imageNameForStatus(status)
-  #    when 'name'
-  #      @abPeople[row].displayName
-  #  end
-  #end
+
 
 end

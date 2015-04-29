@@ -171,11 +171,13 @@ def handle_not_on_the_phone
 end
 
 def notify_on
-  NSLog("***Turn LED on***")
+  NSLog("***Send LED on***")
+  NSNotificationCenter.defaultCenter.postNotificationName("ASDBeanLightRed", object:self)
 end
 
 def notify_off
-  NSLog("***Turn LED off***")
+  NSLog("***Send LED off***")
+  NSNotificationCenter.defaultCenter.postNotificationName("ASDBeanLightClear", object:self)
 end
 
 

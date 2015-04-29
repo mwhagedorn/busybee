@@ -27,6 +27,17 @@ class AppDelegate
                                                    name: "ASDBeansChanged",
                                                    object:   nil
 
+    NSNotificationCenter.defaultCenter.addObserver self,
+                                                   selector: "didGoOnThePhone:",
+                                                   name: "ASDBeanLightRed",
+                                                   object:   nil
+    NSNotificationCenter.defaultCenter.addObserver self,
+                                                   selector: "didGoOffThePhone:",
+                                                   name: "ASDBeanLightClear",
+                                                   object:   nil
+
+
+
 
   end
 
@@ -44,16 +55,28 @@ class AppDelegate
     @table.reloadData
   end
 
+  def didGoOnThePhone(notification)
+    NSLog("AppDelegate::On The Phone")
+    led_red(self)
+  end
+
+  def didGoOffThePhone(notification)
+      NSLog("AppDelegate::Off The Phone")
+      led_clear(self)
+  end
+
+
+
   def led_red(sender)
-    @beanm.bean_red
+    @beanm.bean_red if @beanm
   end
 
   def led_clear(sender)
-    @beanm.bean_clear
+    @beanm.bean_clear if @beanm
   end
 
   def led_green(sender)
-    @beanm.bean_green
+    @beanm.bean_green if @beanm
   end
 
 

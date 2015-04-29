@@ -63,7 +63,7 @@ class BeanDevicesManager
 
   def set_bean_color(color)
     #NSColor
-    @bean.setLedColor(color)
+    @bean.setLedColor(color)  if @bean
   end
 
   def send_beans_notification

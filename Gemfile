@@ -5,6 +5,7 @@ gem 'motion-cocoapods'
 
 
 gem "motion-bundler"
+#gem 'motion-set'
 
 gem 'motion-state-machine'
 

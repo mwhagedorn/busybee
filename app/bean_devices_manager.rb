@@ -1,43 +1,39 @@
 class BeanDevicesManager
-  attr_accessor :devices
+  #attr_accessor :devices
   attr_accessor :beans
-  attr_accessor :bean
+  #attr_accessor :bean
 
   def initialize
    bean_mgr.delegate = self
    bean_mgr.startScanningForBeans
-   @beans = NSMutableArray.new
+   @beans = []
   end
 
 
   def didUpdateDiscoveredBeans(discoveredBeans, withBean: newBean)
-    self.beans= discoveredBeans
     NSLog("didUpdateDiscoveredBeans")
-    add_to_collection(newBean)
+    #add_to_collection(newBean)
   end
 
   def didConnectToBean(bean)
     NSLog("didConnectToBean")
-    bean.setArduinoPowerState(ArduinoPowerState_Off)
+    #bean.setArduinoPowerState(ArduinoPowerState_Off)
     add_to_collection(bean)
   end
 
-  def add_to_collection(bean)
-    unless self.beans.detect{|b| b.isEqualTo(bean)}
-      NSLog("added")
-      self.beans << bean
-      send_beans_notification
-    else
 
-      NSLog("condition:"+(self.beans.detect { |b| b.isEqualTo(bean) } ? "true" : "false"))
+  def add_to_collection(bean)
+    NSLog("addBeanToCollection")
+    count = beans.count
+    if !beans.any?{|bean| bean.isEqualToBean(bean)}
+      beans.addObject(bean)
+      send_beans_notification
     end
   end
 
   def remove_from_collection(bean)
-    if self.beans.reject!{|b| b.isEqualTo(bean)}
-      NSLog("deleted")
-      send_beans_notification
-    end
+    beans.removeObject(bean)
+    send_beans_notification
   end
 
   def didDisconnectFromBean(bean)
@@ -49,24 +45,22 @@ class BeanDevicesManager
     bean_mgr.stopScanningForBeans
   end
 
-  def bean_green
-    set_bean_color(NSColor.greenColor)
+  def bean_green(bean)
+    bean.setLedColor(NSColor.greenColor) if bean
   end
 
-  def bean_red
-     set_bean_color(NSColor.redColor)
+  def bean_red(bean)
+    bean.setLedColor(NSColor.redColor) if bean
   end
 
-  def bean_clear
-    set_bean_color(NSColor.colorWithDeviceRed(0.0, green:0.0,blue:0.0,alpha:1.0))
+  def bean_clear(bean)
+    setLedColor = NSColor.colorWithDeviceRed(0.0, green:0.0,blue:0.0,alpha:1.0)
+    bean.setLedColor(setLedColor) if bean
   end
 
-  def set_bean_color(color)
-    #NSColor
-    @bean.setLedColor(color)  if @bean
-  end
 
   def send_beans_notification
+    NSLog("BeansChanged Notification")
     NSNotificationCenter.defaultCenter.postNotification(NSNotification.notificationWithName("ASDBeansChanged",object:nil))
   end
 

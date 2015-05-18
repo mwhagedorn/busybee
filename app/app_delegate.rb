@@ -1,8 +1,10 @@
 class AppDelegate
 
   attr_accessor :beans
+  attr_accessor :selected_bean
 
   def applicationDidFinishLaunching(notification)
+    @selected_bean = nil
     @beans = []
     @beanm = BeanDevicesManager.new
 
@@ -68,15 +70,15 @@ class AppDelegate
 
 
   def led_red(sender)
-    @beanm.bean_red
+    @beanm.bean_red(@selected_bean)
   end
 
   def led_clear(sender)
-    @beanm.bean_clear
+    @beanm.bean_clear(@selected_bean)
   end
 
   def led_green(sender)
-    @beanm.bean_green
+    @beanm.bean_green(@selected_bean)
   end
 
 
@@ -99,6 +101,7 @@ class AppDelegate
     @table          = NSTableView.alloc.initWithFrame(scrollView.bounds)
     @table.delegate = self
     @table.dataSource = self
+    @table.usesAlternatingRowBackgroundColors=true
 
     column1          = NSTableColumn.alloc.initWithIdentifier('status')
     column1.editable = false
@@ -143,25 +146,36 @@ class AppDelegate
       else
         return "Unknown"
     end
-    #return self.beans.objectAtIndex(rowIndex).name
   end
 
   def numberOfRowsInTableView(tableView)
     self.beans.count
   end
 
+  def tableViewSelectionDidChange(notification)
+    the_table = notification.object;
+    the_row = the_table.selectedRow;
+
+    @selected_bean = @beans.objectAtIndex(the_row)
+    NSLog("selected a bean")
+  end
+
  def validateUserInterfaceItem(anItem)
-  NSLog("validateUserInterfaceItem")
   theAction = anItem.action
 
-  if theAction == "led_red:" || theAction == "led_green:" ||theAction == "led_clear:"
-    if @beanm.bean
+  if theAction == "led_red:" || theAction == "led_green:" || theAction == "led_clear:"
+    if @selected_bean
+      NSLog("enable menu")
       return true
     else
+      NSLog("disable menu")
       return false
     end
   end
-  return true
+
+  return true if @selected_bean
+
+  false
  end
 
 
